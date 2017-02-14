@@ -1,53 +1,49 @@
 $(document).ready(function(){
   // Creating an event listener, something to check if clickMe
   // has had anything happen to it. 'click' says pay attention to clicks
-  $('#clickMe').on('click', function(){
+  $('#submitNewEmployee').on('click', function(){
     var firstName = $('#firstName').val(); // gets value in firstName input box
     var idNumber = $('#idNumber').val(); // gets value in middleName input box
     var lastName = $('#lastName').val();
     var jobTitle = $('#jobTitle').val();
     var annualSalary = $('#annualSalary').val();
-    var monthlySalary = $('#annualSalary').val()/parseInt(12);
-    var totalGroupSalary = $('#totalMonthlySalary').val() + monthlySalary;
+    // var monthlySalary = $('#annualSalary')/ 12;
+    // var totalGroupSalary = $('#totalMonthlySalary').text()+ monthlySalary;
 
-    $('#nameContainer').append('<div id="fullList">' + '<p>' + firstName + " " + lastName + "  " + idNumber + "  " +
-    jobTitle + "  " +"<div class='annualSalary'>" + annualSalary +  "  " + '</div class="annualSalary">' +
-    '<button class="deleteButton">Delete</button></p>' + "</div id='fullList'" + '<br>');
+        $('#employeeTableBody').append(
+         '<tr>' +
+           '<td>'+ firstName + '</td>' +
+           '<td>'+ lastName + '</td>' +
+           '<td>'+ idNumber + '</td>' +
+           '<td>' + jobTitle + '</td>' +
+           '<td>' + annualSalary + '</td>' +
+           '<td><button class="deleteEmployeeButton" data-salary="' + annualSalary + ' ">Delete ' + firstName + '</button></td>' +
+           '</tr>'
 
-var total_price=0;
-    $("#totalMonthlySalary").each(function(){
-    total_price += parseInt($(this).val());
-    });
-    $('#totalMonthlySalary').append(parseInt(totalGroupSalary));
+     );
+//     total_price += parseInt($(this).val());
+//     });
+var newMonthlyExpenses = annualSalary / 12;
+var previousSalaryTotal = $('#monthlyExpenses').text();
+var totalMonthlyExpenses = parseFloat(previousSalaryTotal) + newMonthlyExpenses;
+$('#monthlyExpenses').text(totalMonthlyExpenses);
 
-    // function getTotal(){
-    //     var totalGetSalary = 0;
-    //     $('#totalMonthlySalary').each(function(){
-    //         totalGroupSalary += parseFloat(this.innerHTML);
-    //     });
-    //     $('#totalMonthlySalary').text();
+
+
+$('.employeeFormInput').val('');
+    //  $('#totalMonthlySalary').text(parseFloat(totalGroupSalary));
+
 
 });
-
-$('#employeeResetButton').on('click','#employeeResetButton', function(){
-  $('.resetterClass').inputBoxValue().remove();
-
-
-});
-
-
-
-                                                                                                                          // $('#totalSalary').after('<p>'cumulativeMonthlySalary'</p>');
-                                                                                                                          // $('#totalSalary').
-
-                                                                                                                              // var resetButton = function() {
-                                                                //     document.getElementById("employeeForm").reset(firstName,lastName,idNumber,jobTitle);
-                                                                // $('#employeeForm').on('click', function(){
-                                                                //   $(this).children().reset();
-                                                                // });
-$('#nameContainer').on('click', '.deleteButton', function(){
+                                                          //   $(this).children().reset();                                                // });
+$('#employeeTableBody').on('click','.deleteEmployeeButton', function(){
   // $(this) refers to the button that was just clicked (not all of them)
   // console.log($(this));
-  $(this).parent().remove();
+  var deletedEmployeeSalary = $(this).data('salary');
+  var deletedEmployeeExpenses = deletedEmployeeSalary / 12;
+  var previousMonthlyExpenses = $('#monthlyExpenses').text();
+  var newTotalMonthlyExpenses  = previousMonthlyExpenses - deletedEmployeeExpenses;
+  $('#monthlyExpenses').text(newTotalMonthlyExpenses);
+  $(this).parent().parent().remove();
 });
 });

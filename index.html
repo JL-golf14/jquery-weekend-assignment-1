@@ -11,41 +11,37 @@
 
 
 
-
-    <label for="firstName">First Name</label>
-    <input class="restterClass" type="text" id="firstName" placeholder="First Name">
-    <label for="lastName">Last Name</label>
-    <input class="restterClass" type="text" id="lastName" placeholder="Last Name">
-    <label for="idNumber">ID Number</label>
-    <input class="restterClass" type="text" id="idNumber" placeholder="ID Number">
-    <label for="jobTitle">Job Title</label>
-    <input class="restterClass" type="text" id="jobTitle" placeholder="Job Title">
-    <label for="annualSalary">Annual Salary</label>
-    <input class="restterClass" type="text" id="annualSalary" placeholder="Annual Salary">
-    <button type="button" name="button" id="clickMe">Add Employee</button>
-    <button type="button" id="employeeResetButton">Reset Form</button>
+  <label type="text" name="firstName"></label>
+  <input type="text" placeholder="first Name" id="firstName" class="employeeFormInput"></input>
+  <label type="text" name="lastName"></label>
+  <input type="text" placeholder="Last Name" id="lastName" class="employeeFormInput"></input>
+  <label type="text" name="idNumber"></label>
+  <input type="number" placeholder="ID Number" id="idNumber" class="employeeFormInput"></input>
+  <label type="text" name="jobTitle"></label>
+  <input type="text" placeholder="Job Title" id="jobTitle" class="employeeFormInput"></input>
+  <label type="text" name="annualSalary"></label>
+  <input type="number" placeholder="Annual Salary" id="annualSalary" class="employeeFormInput"></input>
+  <button type="button" id="submitNewEmployee">Submit</button>
 
 
-<h2>Employee List</h2>
-<br>
-<div  id="nameContainer">
-  <br>
+<h3>Employee List</h3>
+<table>
+  <thead>
 
+    <tr>
 
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Annual Salary</th>
+    </tr>
+  </thead>
 
+<tbody id="employeeTableBody">
+</tbody>
+</table>
+<h3 >Monthly Salary Expenditures: <span id="monthlyExpenses">0</span></h3>
 
-
-
-
-
-
-</div>
-
-
-<h2>Monthly Cost</h2>
-
-<div id="totalMonthlySalary"></div>
-
-</div>
 </body>
 </html>
